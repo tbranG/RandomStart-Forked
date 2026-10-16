@@ -207,19 +207,23 @@ namespace RandomStartMod
                     );
                 }
 
+                int startingPawnCount = settings.startingPawnCountRange.RandomInRange;
+                StartingPawnUtility.ClearAllStartingPawns();
+                for (int i = 0; i < startingPawnCount; i++)
+                {
+                    StartingPawnUtility.StartingAndOptionalPawnGenerationRequests.Add(
+                        StartingPawnUtility.DefaultStartingPawnRequest
+                    );
+                    StartingPawnUtility.AddNewPawn(i);
+                }
+
                 PrepareModeratelyCompat.RandomiseStartingPawns();
             }
-            else if (
-                settings.startingPawnForceViolence
-                || !settings.randomisePawnAge
-                || !settings.randomisePawnSex
-                || !settings.randomisePawnName
-                || settings.PawnNotDisabledWorkTags
-                || (settings.pawnNames != null && settings.pawnNames.Count > 0)
-            )
+            else
             {
                 StartingPawnUtility.ClearAllStartingPawns();
-                for (int i = 0; i < 10; i++)
+                int startingPawnCount = settings.startingPawnCountRange.RandomInRange;
+                for (int i = 0; i < startingPawnCount; i++)
                 {
                     PawnGenerationRequest request = StartingPawnUtility.DefaultStartingPawnRequest;
                     if (settings.startingPawnForceViolence)

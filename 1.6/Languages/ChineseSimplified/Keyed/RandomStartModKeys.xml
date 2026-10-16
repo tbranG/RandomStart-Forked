@@ -129,6 +129,7 @@
 	<RandomStartMod.Characters.OverrideNameTooltip>启用后，您可以为起始殖民者指定自定义姓名。将字段留空以使用随机生成的姓名。</RandomStartMod.Characters.OverrideNameTooltip>
 	<RandomStartMod.Characters.OverrideAge>覆盖年龄</RandomStartMod.Characters.OverrideAge>
 	<RandomStartMod.Characters.OverrideAgeTooltip>启用后，您可以为起始殖民者指定年龄范围，而不是使用随机年龄。</RandomStartMod.Characters.OverrideAgeTooltip>
+	<RandomStartMod.Characters.StartingPawnCount>起始殖民者数量：</RandomStartMod.Characters.StartingPawnCount>
 	<RandomStartMod.Characters.OverrideSex>覆盖性别</RandomStartMod.Characters.OverrideSex>
 	<RandomStartMod.Characters.OverrideSexTooltip>启用后，您可以为起始殖民者指定性别，而不是使用随机性别。</RandomStartMod.Characters.OverrideSexTooltip>
 	<RandomStartMod.Characters.AddPawnName>添加小人姓名</RandomStartMod.Characters.AddPawnName>

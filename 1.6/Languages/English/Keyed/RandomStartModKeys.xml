@@ -123,6 +123,7 @@
 	<RandomStartMod.Characters.OverrideNameTooltip>When enabled, you can specify custom names for your starting colonists. Leave fields empty to use randomly generated names.</RandomStartMod.Characters.OverrideNameTooltip>
 	<RandomStartMod.Characters.OverrideAge>Override Age</RandomStartMod.Characters.OverrideAge>
 	<RandomStartMod.Characters.OverrideAgeTooltip>When enabled, you can specify an age range for your starting colonists instead of using random ages.</RandomStartMod.Characters.OverrideAgeTooltip>
+	<RandomStartMod.Characters.StartingPawnCount>Starting colonist count:</RandomStartMod.Characters.StartingPawnCount>
 	<RandomStartMod.Characters.OverrideSex>Override Sex</RandomStartMod.Characters.OverrideSex>
 	<RandomStartMod.Characters.OverrideSexTooltip>When enabled, you can specify the gender for your starting colonists instead of using random genders.</RandomStartMod.Characters.OverrideSexTooltip>
 	<RandomStartMod.Characters.AddPawnName>Add Pawn Name</RandomStartMod.Characters.AddPawnName>

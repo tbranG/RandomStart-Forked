@@ -229,6 +229,7 @@ namespace RandomStartMod
 
         public bool randomisePawnName = true;
         public List<PawnNameData> pawnNames = new List<PawnNameData>();
+        public IntRange startingPawnCountRange = new IntRange(3, 10);
         public bool randomisePawnAge = true;
         public IntRange randomisePawnAgeRange = new IntRange(20, 40);
         public bool randomisePawnSex = true;
@@ -589,6 +590,11 @@ namespace RandomStartMod
             Scribe_Values.Look(ref randomisePawnName, "randomisePawnName", defaultValue: true);
             Scribe_Collections.Look(ref pawnNames, "pawnNames", LookMode.Deep);
 
+            Scribe_Values.Look(
+                ref startingPawnCountRange,
+                "startingPawnCountRange",
+                new IntRange(3, 10)
+            );
             Scribe_Values.Look(ref randomisePawnAge, "randomisePawnAge", defaultValue: true);
             Scribe_Values.Look(
                 ref randomisePawnAgeRange,
@@ -836,6 +842,7 @@ namespace RandomStartMod
 
             randomisePawnName = true;
             pawnNames = new List<PawnNameData>();
+            startingPawnCountRange = new IntRange(3, 10);
             randomisePawnAge = true;
             randomisePawnAgeRange = new IntRange(20, 40);
             randomisePawnSex = true;

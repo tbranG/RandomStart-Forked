@@ -1835,6 +1835,18 @@ namespace RandomStartMod
             planetListingHeight += Text.LineHeight;
             Text.Font = GameFont.Small;
 
+            listingStandard.Label("RandomStartMod.Characters.StartingPawnCount".Translate());
+            planetListingHeight += Text.LineHeight + 4f;
+            Widgets.IntRange(
+                listingStandard.GetRect(32f),
+                1623498652,
+                ref settings.startingPawnCountRange,
+                1,
+                20,
+                Util.GetAgeRangeLabelPercent(settings.startingPawnCountRange)
+            );
+            planetListingHeight += 32f;
+
             // PrepareModerately Integration
             if (PrepareModeratelyCompat.IsAvailable)
             {
