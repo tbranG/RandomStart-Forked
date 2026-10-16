@@ -3,3 +3,4 @@ packages/
 Source/obj/
 Source/bin/
 .config/
+.idea/
