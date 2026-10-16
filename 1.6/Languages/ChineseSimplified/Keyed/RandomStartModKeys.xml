@@ -10,10 +10,12 @@
 	<RandomStartMod.StartingTile.FilterStartingTemperature>过滤起始温度</RandomStartMod.StartingTile.FilterStartingTemperature>
 	<RandomStartMod.StartingTile.FilterStartingTemperatureTooltip>启用以根据温度范围过滤起始地点</RandomStartMod.StartingTile.FilterStartingTemperatureTooltip>
 
-	<!-- Character Settings -->局</RandomStartMod.Title>
+	<!-- Character Settings -->
 	<RandomStartMod.LaunchingWithoutConfiguring>您正在启动{0}，但尚未对其进行配置。</RandomStartMod.LaunchingWithoutConfiguring>
 	<RandomStartMod.SettingsAccess>（您可以通过右键单击<b>Random</b>按钮来访问设置）</RandomStartMod.SettingsAccess>
 	<RandomStartMod.RespectMemberXenotypes>仅选择玩家派系的异种</RandomStartMod.RespectMemberXenotypes>
+	<RandomStartMod.Misc.SameXenotypeForAll>所有起始殖民者使用相同异种</RandomStartMod.Misc.SameXenotypeForAll>
+	<RandomStartMod.Misc.SameXenotypeForAllTooltip>随机异种或自定义基因时，让所有起始殖民者使用相同的异种或基因组合。</RandomStartMod.Misc.SameXenotypeForAllTooltip>
 	<RandomStartMod.ALittleMore>略多</RandomStartMod.ALittleMore>
 	<RandomStartMod.ALittleLess>略少</RandomStartMod.ALittleLess>
 	<RandomStartMod.VeryHigh>很高</RandomStartMod.VeryHigh>
@@ -152,6 +154,7 @@
 	<RandomStartMod.TooltipTitles.RealRuinsBiomeFiltering>真实废墟生物群落过滤</RandomStartMod.TooltipTitles.RealRuinsBiomeFiltering>
 	<RandomStartMod.TooltipTitles.RandomizeXenotype>随机化异种</RandomStartMod.TooltipTitles.RandomizeXenotype>
 	<RandomStartMod.TooltipTitles.RespectFactionXenotypes>尊重派系异种</RandomStartMod.TooltipTitles.RespectFactionXenotypes>
+	<RandomStartMod.TooltipTitles.SameXenotypeForAll>所有殖民者使用相同异种</RandomStartMod.TooltipTitles.SameXenotypeForAll>
 	<RandomStartMod.TooltipTitles.RandomizeCustomGenes>随机化自定义基因</RandomStartMod.TooltipTitles.RandomizeCustomGenes>
 	<RandomStartMod.TooltipTitles.MinimumMetabolicEfficiency>最低代谢效率</RandomStartMod.TooltipTitles.MinimumMetabolicEfficiency>
 	<RandomStartMod.TooltipTitles.PlayClassicMode>使用经典模式</RandomStartMod.TooltipTitles.PlayClassicMode>

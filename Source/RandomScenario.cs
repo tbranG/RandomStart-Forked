@@ -1117,40 +1117,58 @@ namespace RandomStartMod
 
         private static void SetupRandomGenes(RandomStartSettings settings)
         {
+            List<Pawn> pawns = Find.GameInitData.startingAndOptionalPawns;
             if (settings.enableRandomXenotypes)
             {
-                foreach (Pawn p in Find.GameInitData.startingAndOptionalPawns)
+                IEnumerable<XenotypeDef> xenotypes =
+                    DefDatabase<XenotypeDef>.AllDefsListForReading;
+                if (
+                    settings.respectFactionXenotypes
+                    && Find.FactionManager.OfPlayer.def.basicMemberKind.xenotypeSet != null
+                )
+                    xenotypes = xenotypes.Where(
+                        (XenotypeDef x) =>
+                            Find.FactionManager.OfPlayer.def.basicMemberKind.xenotypeSet.Contains(x)
+                    );
+
+                XenotypeDef sharedXenotype = settings.sameXenotypeForAll
+                    ? xenotypes.RandomElement()
+                    : null;
+                foreach (Pawn p in pawns)
                 {
-                    IEnumerable<XenotypeDef> xenotypes =
-                        DefDatabase<XenotypeDef>.AllDefsListForReading;
-                    if (
-                        settings.respectFactionXenotypes
-                        && Find.FactionManager.OfPlayer.def.basicMemberKind.xenotypeSet != null
-                    )
-                        xenotypes = xenotypes.Where(
-                            (XenotypeDef x) =>
-                                Find.FactionManager.OfPlayer.def.basicMemberKind.xenotypeSet.Contains(
-                                    x
-                                )
-                        );
-                    XenotypeDef xenotype = xenotypes.RandomElement();
-                    p.genes.SetXenotype(xenotype);
+                    p.genes.SetXenotype(
+                        settings.sameXenotypeForAll ? sharedXenotype : xenotypes.RandomElement()
+                    );
                 }
             }
 
             if (settings.enableRandomCustomXenotypes)
             {
-                foreach (Pawn p in Find.GameInitData.startingAndOptionalPawns)
+                List<GeneDef> sharedSelectedGenes = null;
+                if (settings.sameXenotypeForAll)
                 {
-                    List<GeneDef> selectedGenes = new List<GeneDef>();
-                    for (int i = 0; i < settings.randomGeneRange.RandomInRange; i++)
+                    sharedSelectedGenes = GenerateRandomGeneSet(settings);
+                }
+
+                string sharedXenotypeName = settings.sameXenotypeForAll
+                    ? GeneUtility.GenerateXenotypeNameFromGenes(sharedSelectedGenes)
+                    : null;
+                XenotypeIconDef sharedIcon = settings.sameXenotypeForAll
+                    ? DefDatabase<XenotypeIconDef>.GetRandom()
+                    : null;
+                Dictionary<GeneDef, bool> sharedGeneTypes = settings.sameXenotypeForAll
+                    ? new Dictionary<GeneDef, bool>()
+                    : null;
+
+                foreach (Pawn p in pawns)
+                {
+                    List<GeneDef> selectedGenes = sharedSelectedGenes
+                        ?? GenerateRandomGeneSet(settings);
+                    if (settings.sameXenotypeForAll && !settings.enableRandomXenotypes)
                     {
-                        selectedGenes.Add(
-                            DefDatabase<GeneDef>
-                                .AllDefsListForReading.Where((GeneDef g) => g.canGenerateInGeneSet)
-                                .RandomElement()
-                        );
+                        p.genes.SetXenotype(XenotypeDefOf.Baseliner);
                     }
+
                     if (selectedGenes.Count > 0)
                     {
                         int metabolismTotal = 0;
@@ -1163,7 +1181,7 @@ namespace RandomStartMod
                                     >= settings.minimumMetabolicEfficiency
                                 )
                                 {
-                                    GivePawnGene(p, geneDef, ref metabolismTotal);
+                                    GivePawnGene(p, geneDef, ref metabolismTotal, sharedGeneTypes);
                                     metabolismTotal += geneDef.biostatMet;
                                     foreach (Gene gene in p.genes.GenesListForReading)
                                     {
@@ -1177,7 +1195,7 @@ namespace RandomStartMod
                             }
                             else
                             {
-                                GivePawnGene(p, geneDef, ref metabolismTotal);
+                                GivePawnGene(p, geneDef, ref metabolismTotal, sharedGeneTypes);
                                 foreach (Gene gene in p.genes.GenesListForReading)
                                 {
                                     if (gene.Overridden)
@@ -1189,24 +1207,56 @@ namespace RandomStartMod
                             }
                         }
 
-                        p.genes.xenotypeName = GeneUtility.GenerateXenotypeNameFromGenes(
-                            selectedGenes
-                        );
-                        p.genes.iconDef = DefDatabase<XenotypeIconDef>.GetRandom();
+                        p.genes.xenotypeName = sharedXenotypeName
+                            ?? GeneUtility.GenerateXenotypeNameFromGenes(selectedGenes);
+                        p.genes.iconDef = sharedIcon ?? DefDatabase<XenotypeIconDef>.GetRandom();
                     }
                 }
             }
         }
 
-        private static void GivePawnGene(Pawn p, GeneDef geneDef, ref int metabolismTotal)
+        private static List<GeneDef> GenerateRandomGeneSet(RandomStartSettings settings)
         {
-            p.genes.AddGene(geneDef, Rand.Bool);
+            List<GeneDef> selectedGenes = new List<GeneDef>();
+            for (int i = 0; i < settings.randomGeneRange.RandomInRange; i++)
+            {
+                selectedGenes.Add(
+                    DefDatabase<GeneDef>
+                        .AllDefsListForReading.Where((GeneDef g) => g.canGenerateInGeneSet)
+                        .RandomElement()
+                );
+            }
+            return selectedGenes;
+        }
+
+        private static void GivePawnGene(
+            Pawn p,
+            GeneDef geneDef,
+            ref int metabolismTotal,
+            Dictionary<GeneDef, bool> sharedGeneTypes = null
+        )
+        {
+            bool xenogene;
+            if (sharedGeneTypes != null)
+            {
+                if (!sharedGeneTypes.TryGetValue(geneDef, out xenogene))
+                {
+                    xenogene = Rand.Bool;
+                    sharedGeneTypes.Add(geneDef, xenogene);
+                }
+            }
+            else
+            {
+                xenogene = Rand.Bool;
+            }
+
+            p.genes.AddGene(geneDef, xenogene);
             Gene gene = GeneMaker.MakeGene(geneDef, p);
             p.genes.OverrideAllConflicting(gene);
             metabolismTotal += geneDef.biostatMet;
             if (geneDef.prerequisite != null)
             {
-                GivePawnGene(p, geneDef.prerequisite, ref metabolismTotal);
+                GivePawnGene(p, geneDef.prerequisite, ref metabolismTotal, sharedGeneTypes);
             }
         }
 

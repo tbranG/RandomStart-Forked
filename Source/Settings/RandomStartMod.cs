@@ -1279,6 +1279,11 @@ namespace RandomStartMod
                 optionalFeaturesListingHeight += 24f;
                 DoSettingToggle(listingStandard.GetRect(24f), $"{"Randomize".Translate()}: {"Genes".Translate().CapitalizeFirst()}", "RandomStartMod.TooltipTitles.RandomizeCustomGenes".Translate().AsTipTitle() + "\n\n" + "RandomStartMod.Misc.RandomizeCustomGenesTooltip".Translate(), ref settings.enableRandomCustomXenotypes);
                 optionalFeaturesListingHeight += 24f;
+                if (settings.enableRandomXenotypes || settings.enableRandomCustomXenotypes)
+                {
+                    DoSettingToggle(listingStandard.GetRect(24f), "RandomStartMod.Misc.SameXenotypeForAll".Translate(), "RandomStartMod.TooltipTitles.SameXenotypeForAll".Translate().AsTipTitle() + "\n\n" + "RandomStartMod.Misc.SameXenotypeForAllTooltip".Translate(), ref settings.sameXenotypeForAll);
+                    optionalFeaturesListingHeight += 24f;
+                }
                 if (settings.enableRandomCustomXenotypes)
                 {
                     listingStandard.Gap();

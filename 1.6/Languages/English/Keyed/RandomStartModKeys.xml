@@ -5,6 +5,8 @@
 	<RandomStartMod.LaunchingWithoutConfiguring>You are launching {0} but you haven't configured it yet.</RandomStartMod.LaunchingWithoutConfiguring>
 	<RandomStartMod.SettingsAccess>(You can access the settings by right-clicking the <b>Random</b> button)</RandomStartMod.SettingsAccess>
 	<RandomStartMod.RespectMemberXenotypes>Only choose from player faction xenotypes</RandomStartMod.RespectMemberXenotypes>
+	<RandomStartMod.Misc.SameXenotypeForAll>Same xenotype for all starting colonists</RandomStartMod.Misc.SameXenotypeForAll>
+	<RandomStartMod.Misc.SameXenotypeForAllTooltip>When randomizing xenotypes or custom genes, use the same xenotype or gene set for every starting colonist.</RandomStartMod.Misc.SameXenotypeForAllTooltip>
 	<RandomStartMod.ALittleMore>A Little More</RandomStartMod.ALittleMore>
 	<RandomStartMod.ALittleLess>A Little Less</RandomStartMod.ALittleLess>
 	<RandomStartMod.VeryHigh>Very High</RandomStartMod.VeryHigh>
@@ -146,6 +148,7 @@
 	<RandomStartMod.TooltipTitles.RealRuinsBiomeFiltering>Real Ruins Biome Filtering</RandomStartMod.TooltipTitles.RealRuinsBiomeFiltering>
 	<RandomStartMod.TooltipTitles.RandomizeXenotype>Randomize Xenotype</RandomStartMod.TooltipTitles.RandomizeXenotype>
 	<RandomStartMod.TooltipTitles.RespectFactionXenotypes>Respect Faction Xenotypes</RandomStartMod.TooltipTitles.RespectFactionXenotypes>
+	<RandomStartMod.TooltipTitles.SameXenotypeForAll>Same Xenotype for All</RandomStartMod.TooltipTitles.SameXenotypeForAll>
 	<RandomStartMod.TooltipTitles.RandomizeCustomGenes>Randomize Custom Genes</RandomStartMod.TooltipTitles.RandomizeCustomGenes>
 	<RandomStartMod.TooltipTitles.MinimumMetabolicEfficiency>Minimum Metabolic Efficiency</RandomStartMod.TooltipTitles.MinimumMetabolicEfficiency>
 	<RandomStartMod.TooltipTitles.PlayClassicMode>Play Classic Mode</RandomStartMod.TooltipTitles.PlayClassicMode>
