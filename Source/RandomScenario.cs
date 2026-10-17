@@ -25,6 +25,7 @@ namespace RandomStartMod
 
             Current.ProgramState = ProgramState.Entry;
             Current.Game = new Game { InitData = new GameInitData() };
+            RandomStartPerspectiveCompat.ApplySelectedModes(settings, assignRandomPawn: false);
             SetupRandomScenario(settings);
             SetupRandomDifficulty(settings);
             SetupRandomPlanet(settings);

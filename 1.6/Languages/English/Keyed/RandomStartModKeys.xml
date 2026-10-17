@@ -14,6 +14,17 @@
 
 	<!-- Tab Names -->
 	<RandomStartMod.Tabs.StartingTile>Starting Tile</RandomStartMod.Tabs.StartingTile>
+	<RandomStartMod.Perspective.Tab>Perspective</RandomStartMod.Perspective.Tab>
+	<RandomStartMod.Perspective.Title>Perspective integrations</RandomStartMod.Perspective.Title>
+	<RandomStartMod.Perspective.Mode>Perspective Mode</RandomStartMod.Perspective.Mode>
+	<RandomStartMod.Perspective.Mode.Director>Director</RandomStartMod.Perspective.Mode.Director>
+	<RandomStartMod.Perspective.Mode.Authentic>Authentic</RandomStartMod.Perspective.Mode.Authentic>
+	<RandomStartMod.Perspective.Mode.Swap>Swap</RandomStartMod.Perspective.Mode.Swap>
+	<RandomStartMod.Perspective.Mode.Dynamic>Dynamic</RandomStartMod.Perspective.Mode.Dynamic>
+	<RandomStartMod.Perspective.SurveillanceMode>Surveillance Mode</RandomStartMod.Perspective.SurveillanceMode>
+	<RandomStartMod.Perspective.SurveillanceMode.Omniscience>Omniscience</RandomStartMod.Perspective.SurveillanceMode.Omniscience>
+	<RandomStartMod.Perspective.SurveillanceMode.LimitedAwareness>Limited Awareness</RandomStartMod.Perspective.SurveillanceMode.LimitedAwareness>
+	<RandomStartMod.Perspective.ModNotLoaded>Required mod is not loaded; this setting is disabled.</RandomStartMod.Perspective.ModNotLoaded>
 
 	<!-- Difficulty Settings -->
 	<RandomStartMod.Difficulty.Description>Choose the challenge level and game mode for your colony:</RandomStartMod.Difficulty.Description>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
+using RandomStartMod.Compat;
 
 namespace RandomStartMod
 {
@@ -240,6 +241,8 @@ namespace RandomStartMod
 
         public bool limitStartingTileTemperature = false;
         public FloatRange limitStartingTileTemperatureRange = new FloatRange(-10f, 30f);
+        public PerspectiveStartMode perspectiveMode = PerspectiveStartMode.Director;
+        public SurveillanceStartMode surveillanceMode = SurveillanceStartMode.Omniscience;
 
         public override void ExposeData()
         {
@@ -623,6 +626,8 @@ namespace RandomStartMod
                 "limitStartingTileTemperatureRange",
                 new FloatRange(-10f, 30f)
             );
+            Scribe_Values.Look(ref perspectiveMode, "perspectiveMode", PerspectiveStartMode.Director);
+            Scribe_Values.Look(ref surveillanceMode, "surveillanceMode", SurveillanceStartMode.Omniscience);
 
             base.ExposeData();
         }

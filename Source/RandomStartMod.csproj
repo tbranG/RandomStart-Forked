@@ -117,9 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Compat\Compat.cs" />
+    <Compile Include="Compat\RandomStartPerspectiveCompat.cs" />
     <Compile Include="Harmony\ChoiceLetter_GameEnded_Patch.cs" />
+    <Compile Include="Harmony\Game_InitNewGame_Perspective_Patch.cs" />
     <Compile Include="Harmony\ScenPart_PlayerPawnsArriveMethod_Patch.cs" />
     <Compile Include="Harmony\ResearchUtility_Patch.cs" />
+    <Compile Include="Harmony\Scenario_GetFirstConfigPage_Perspective_Patch.cs" />
     <Compile Include="RandomScenario.cs" />
     <Compile Include="Harmony\HarmonyPatcher.cs" />
     <Compile Include="Harmony\OptionListingUtility_Patch.cs" />

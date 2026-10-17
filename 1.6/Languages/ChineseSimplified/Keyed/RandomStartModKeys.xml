@@ -23,6 +23,17 @@
 
 	<!-- Tab Names -->
 	<RandomStartMod.Tabs.StartingTile>起始格子</RandomStartMod.Tabs.StartingTile>
+	<RandomStartMod.Perspective.Tab>视角</RandomStartMod.Perspective.Tab>
+	<RandomStartMod.Perspective.Title>视角模组设置</RandomStartMod.Perspective.Title>
+	<RandomStartMod.Perspective.Mode>视角模式</RandomStartMod.Perspective.Mode>
+	<RandomStartMod.Perspective.Mode.Director>导演模式</RandomStartMod.Perspective.Mode.Director>
+	<RandomStartMod.Perspective.Mode.Authentic>真实模式</RandomStartMod.Perspective.Mode.Authentic>
+	<RandomStartMod.Perspective.Mode.Swap>切换模式</RandomStartMod.Perspective.Mode.Swap>
+	<RandomStartMod.Perspective.Mode.Dynamic>动态模式</RandomStartMod.Perspective.Mode.Dynamic>
+	<RandomStartMod.Perspective.SurveillanceMode>监控模式</RandomStartMod.Perspective.SurveillanceMode>
+	<RandomStartMod.Perspective.SurveillanceMode.Omniscience>全知视角</RandomStartMod.Perspective.SurveillanceMode.Omniscience>
+	<RandomStartMod.Perspective.SurveillanceMode.LimitedAwareness>有限视野</RandomStartMod.Perspective.SurveillanceMode.LimitedAwareness>
+	<RandomStartMod.Perspective.ModNotLoaded>未加载所需模组；此设置已禁用。</RandomStartMod.Perspective.ModNotLoaded>
 
 	<!-- Difficulty Settings -->
 	<RandomStartMod.Difficulty.Description>选择定殖点的挑战等级和游戏模式：</RandomStartMod.Difficulty.Description>

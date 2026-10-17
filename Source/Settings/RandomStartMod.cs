@@ -41,6 +41,8 @@ namespace RandomStartMod
         private static float sectionHeightAdaptation = 0f;
         private static float sectionHeightIdeology = 0f;
         private static float sectionHeightChildren = 0f;
+        private static float perspectiveListingHeight;
+        private static Vector2 perspectiveScrollPosition;
 
         public int currentTab = 0;
         public string randomItemTotalMarketValueLimitTextBuffer;
@@ -100,7 +102,12 @@ namespace RandomStartMod
                 {
                     currentTab = 7;
                     WriteSettings();
-                }, currentTab == 7)
+                }, currentTab == 7),
+                new TabRecord("RandomStartMod.Perspective.Tab".Translate(), () =>
+                {
+                    currentTab = 8;
+                    WriteSettings();
+                }, currentTab == 8)
         };
             if (ModsConfig.BiotechActive || ModsConfig.IdeologyActive)
             {
@@ -145,6 +152,10 @@ namespace RandomStartMod
             else if (currentTab == 7)
             {
                 DoCharactersSettingsTabContents(mainRect.ContractedBy(15f));
+            }
+            else if (currentTab == 8)
+            {
+                DoPerspectiveSettingsTabContents(mainRect.ContractedBy(15f));
             }
         }
 
@@ -2045,6 +2056,87 @@ namespace RandomStartMod
             planetListingHeight += 32f;
             listingStandard.End();
             Widgets.EndScrollView();
+        }
+
+        private void DoPerspectiveSettingsTabContents(Rect inRect)
+        {
+            Rect rect = new Rect(0f, 60f, inRect.width, perspectiveListingHeight);
+            perspectiveListingHeight = 0f;
+            Widgets.BeginScrollView(inRect, ref perspectiveScrollPosition, rect, showScrollbars: false);
+            Listing_Standard listingStandard = new Listing_Standard();
+            listingStandard.Begin(rect);
+            listingStandard.Gap();
+            Text.Font = GameFont.Medium;
+            listingStandard.Label("RandomStartMod.Perspective.Title".Translate());
+            listingStandard.GapLine();
+            perspectiveListingHeight += 24f + Text.LineHeight;
+            Text.Font = GameFont.Small;
+
+            DoPerspectiveModeSetting(listingStandard, RandomStartPerspectiveCompat.PerspectiveShiftAvailable);
+            DoSurveillanceModeSetting(listingStandard, RandomStartPerspectiveCompat.SurveillanceShiftAvailable);
+
+            listingStandard.End();
+            Widgets.EndScrollView();
+        }
+
+        private void DoPerspectiveModeSetting(Listing_Standard listingStandard, bool modAvailable)
+        {
+            bool wasEnabled = GUI.enabled;
+            GUI.enabled = wasEnabled && modAvailable;
+            listingStandard.Label("RandomStartMod.Perspective.Mode".Translate());
+            if (listingStandard.ButtonText(("RandomStartMod.Perspective.Mode." + settings.perspectiveMode).Translate()))
+            {
+                List<FloatMenuOption> options = new List<FloatMenuOption>();
+                foreach (PerspectiveStartMode mode in Enum.GetValues(typeof(PerspectiveStartMode)))
+                {
+                    PerspectiveStartMode selectedMode = mode;
+                    options.Add(new FloatMenuOption(
+                        ("RandomStartMod.Perspective.Mode." + selectedMode).Translate(),
+                        () => settings.perspectiveMode = selectedMode
+                    ));
+                }
+                Find.WindowStack.Add(new FloatMenu(options));
+            }
+            GUI.enabled = wasEnabled;
+            perspectiveListingHeight += 24f + Text.LineHeight + 32f;
+            if (!modAvailable)
+            {
+                Text.Font = GameFont.Tiny;
+                listingStandard.Label("RandomStartMod.Perspective.ModNotLoaded".Translate());
+                Text.Font = GameFont.Small;
+                perspectiveListingHeight += Text.LineHeight;
+            }
+            listingStandard.Gap();
+            perspectiveListingHeight += 12f;
+        }
+
+        private void DoSurveillanceModeSetting(Listing_Standard listingStandard, bool modAvailable)
+        {
+            bool wasEnabled = GUI.enabled;
+            GUI.enabled = wasEnabled && modAvailable;
+            listingStandard.Label("RandomStartMod.Perspective.SurveillanceMode".Translate());
+            if (listingStandard.ButtonText(("RandomStartMod.Perspective.SurveillanceMode." + settings.surveillanceMode).Translate()))
+            {
+                List<FloatMenuOption> options = new List<FloatMenuOption>();
+                foreach (SurveillanceStartMode mode in Enum.GetValues(typeof(SurveillanceStartMode)))
+                {
+                    SurveillanceStartMode selectedMode = mode;
+                    options.Add(new FloatMenuOption(
+                        ("RandomStartMod.Perspective.SurveillanceMode." + selectedMode).Translate(),
+                        () => settings.surveillanceMode = selectedMode
+                    ));
+                }
+                Find.WindowStack.Add(new FloatMenu(options));
+            }
+            GUI.enabled = wasEnabled;
+            perspectiveListingHeight += 24f + Text.LineHeight + 32f;
+            if (!modAvailable)
+            {
+                Text.Font = GameFont.Tiny;
+                listingStandard.Label("RandomStartMod.Perspective.ModNotLoaded".Translate());
+                Text.Font = GameFont.Small;
+                perspectiveListingHeight += Text.LineHeight;
+            }
         }
 
         private void DrawCustomLeft(Listing_Standard listing)
