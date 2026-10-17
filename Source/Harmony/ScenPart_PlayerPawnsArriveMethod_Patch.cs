@@ -237,6 +237,20 @@ namespace RandomStartMod
             {
                 Log.Warning($"[Random Start] Could not find {medicineDefName}; skipping essential medicine.");
             }
+
+            string mealDefName = colonyTechLevel <= TechLevel.Medieval
+                ? "Pemmican"
+                : "MealSurvivalPackaged";
+            ThingDef meal = DefDatabase<ThingDef>.GetNamed(mealDefName, false);
+            if (meal != null)
+            {
+                int mealAmount = string.Equals(mealDefName, "MealSurvivalPackaged") ? 5 : 25
+                AddEssentialThing(meal, mealAmount * pawnCount, thingGroups, ref groupIndex);
+            }
+            else
+            {
+                Log.Warning($"[Random Start] Could not find {mealDefName}; skipping essential meals.");
+            }
         }
 
         private static void AddEssentialThing(
@@ -246,14 +260,19 @@ namespace RandomStartMod
             ref int groupIndex
         )
         {
-            Thing thing = ThingMaker.MakeThing(thingDef, GenStuff.RandomStuffFor(thingDef));
-            thing.stackCount = count;
-            if (thing.def.CanHaveFaction)
+            while (count > 0)
             {
-                thing.SetFactionDirect(Faction.OfPlayer);
+                Thing thing = ThingMaker.MakeThing(thingDef, GenStuff.RandomStuffFor(thingDef));
+                int stackCount = Math.Min(count, thingDef.stackLimit);
+                thing.stackCount = stackCount;
+                if (thing.def.CanHaveFaction)
+                {
+                    thing.SetFactionDirect(Faction.OfPlayer);
+                }
+                thingGroups[groupIndex].Add(thing);
+                groupIndex = (groupIndex + 1) % thingGroups.Count;
+                count -= stackCount;
             }
-            thingGroups[groupIndex].Add(thing);
-            groupIndex = (groupIndex + 1) % thingGroups.Count;
         }
     }
 }
