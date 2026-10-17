@@ -3,7 +3,6 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 using UnityEngine;
-using System.Linq;
 
 namespace RandomStartMod
 {
@@ -38,7 +37,13 @@ namespace RandomStartMod
             {
                 if (opt.label == "NewColony".Translate())
                 {
-                    RandomStartMod randomStartMod = (RandomStartMod)LoadedModManager.ModHandles.First((Mod m) => m.Content.Name == "Random Start");
+                    RandomStartMod randomStartMod = LoadedModManager.GetMod<RandomStartMod>();
+                    if (randomStartMod == null)
+                    {
+                        Log.Error("[Random Start] Could not find the loaded mod instance; the Random menu option was not added.");
+                        return;
+                    }
+
                     ListableOption newOption = new ListableOption(
                     "Random".Translate(),
                     delegate
