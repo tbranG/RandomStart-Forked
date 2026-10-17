@@ -244,7 +244,7 @@ namespace RandomStartMod
             ThingDef meal = DefDatabase<ThingDef>.GetNamed(mealDefName, false);
             if (meal != null)
             {
-                int mealAmount = string.Equals(mealDefName, "MealSurvivalPackaged") ? 5 : 25
+                int mealAmount = string.Equals(mealDefName, "MealSurvivalPackaged") ? 5 : 25;
                 AddEssentialThing(meal, mealAmount * pawnCount, thingGroups, ref groupIndex);
             }
             else

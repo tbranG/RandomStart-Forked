@@ -55,7 +55,7 @@ namespace RandomStartMod.Compat
 
             var candidates = Find.GameInitData.startingAndOptionalPawns
                 .Take(Find.GameInitData.startingPawnCount)
-                .Where(pawn => pawn != null && !pawn.Dead)
+                .Where(p => p != null && !p.Dead)
                 .ToList();
 
             if (!candidates.TryRandomElement(out Pawn pawn))
