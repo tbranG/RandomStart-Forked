@@ -1122,6 +1122,34 @@ namespace RandomStartMod
         private static void SetupRandomGenes(RandomStartSettings settings)
         {
             List<Pawn> pawns = Find.GameInitData.startingAndOptionalPawns;
+            List<Pawn> pawnsToRandomize = new List<Pawn>();
+            if (settings.enableRandomXenotypes || settings.enableRandomCustomXenotypes)
+            {
+                float randomXenotypeChance = Mathf.Clamp01(settings.randomXenotypeChance);
+                if (settings.sameXenotypeForAll)
+                {
+                    if (Rand.Value < randomXenotypeChance)
+                    {
+                        pawnsToRandomize.AddRange(pawns);
+                    }
+                }
+                else
+                {
+                    foreach (Pawn pawn in pawns)
+                    {
+                        if (Rand.Value < randomXenotypeChance)
+                        {
+                            pawnsToRandomize.Add(pawn);
+                        }
+                    }
+                }
+            }
+
+            if (pawnsToRandomize.Count == 0)
+            {
+                return;
+            }
+
             if (settings.enableRandomXenotypes)
             {
                 IEnumerable<XenotypeDef> xenotypes =
@@ -1138,7 +1166,7 @@ namespace RandomStartMod
                 XenotypeDef sharedXenotype = settings.sameXenotypeForAll
                     ? xenotypes.RandomElement()
                     : null;
-                foreach (Pawn p in pawns)
+                foreach (Pawn p in pawnsToRandomize)
                 {
                     p.genes.SetXenotype(
                         settings.sameXenotypeForAll ? sharedXenotype : xenotypes.RandomElement()
@@ -1155,6 +1183,7 @@ namespace RandomStartMod
                 }
 
                 string sharedXenotypeName = settings.sameXenotypeForAll
+                    && sharedSelectedGenes.Count > 0
                     ? GeneUtility.GenerateXenotypeNameFromGenes(sharedSelectedGenes)
                     : null;
                 XenotypeIconDef sharedIcon = settings.sameXenotypeForAll
@@ -1164,7 +1193,7 @@ namespace RandomStartMod
                     ? new Dictionary<GeneDef, bool>()
                     : null;
 
-                foreach (Pawn p in pawns)
+                foreach (Pawn p in pawnsToRandomize)
                 {
                     List<GeneDef> selectedGenes = sharedSelectedGenes
                         ?? GenerateRandomGeneSet(settings);

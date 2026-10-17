@@ -5,6 +5,8 @@
 	<RandomStartMod.SettingsAccess>(You can access the settings by right-clicking the <b>Random</b> button)</RandomStartMod.SettingsAccess>
 	<RandomStartMod.RespectMemberXenotypes>Only choose from player faction xenotypes</RandomStartMod.RespectMemberXenotypes>
 	<RandomStartMod.Characters.StartingPawnCount>Starting colonist count:</RandomStartMod.Characters.StartingPawnCount>
+	<RandomStartMod.Misc.RandomXenotypeChance>Chance to randomize xenotype:</RandomStartMod.Misc.RandomXenotypeChance>
+	<RandomStartMod.Misc.RandomXenotypeChanceTooltip>Sets the chance for each starting colonist to receive a randomized xenotype or custom gene set. When sharing one xenotype, the chance is rolled once for the whole group.</RandomStartMod.Misc.RandomXenotypeChanceTooltip>
 	<RandomStartMod.ALittleMore>A Little More</RandomStartMod.ALittleMore>
 	<RandomStartMod.ALittleLess>A Little Less</RandomStartMod.ALittleLess>
 	<RandomStartMod.VeryHigh>Very High</RandomStartMod.VeryHigh>

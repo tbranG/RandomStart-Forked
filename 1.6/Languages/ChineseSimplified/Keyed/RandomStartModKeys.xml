@@ -89,6 +89,8 @@
 	<RandomStartMod.Misc.GenesTitle>遗传特征</RandomStartMod.Misc.GenesTitle>
 	<RandomStartMod.Misc.GenesDescription>配置起始殖民者的遗传特征与异种类型：</RandomStartMod.Misc.GenesDescription>
 	<RandomStartMod.Misc.CountLabel>数量：</RandomStartMod.Misc.CountLabel>
+	<RandomStartMod.Misc.RandomXenotypeChance>异种随机化概率：</RandomStartMod.Misc.RandomXenotypeChance>
+	<RandomStartMod.Misc.RandomXenotypeChanceTooltip>设置每位起始殖民者获得随机异种或自定义基因组合的概率。启用所有殖民者共享异种时，此概率对整个群体只进行一次判定。</RandomStartMod.Misc.RandomXenotypeChanceTooltip>
 	<RandomStartMod.Misc.RandomizeXenotypeTooltip>从所有可用异种定义中随机为起始小人分配异种。这会影响他们的基因特性、能力与外观。</RandomStartMod.Misc.RandomizeXenotypeTooltip>
 	<RandomStartMod.Misc.RespectFactionXenotypesTooltip>在随机分配异种时，仅从适合你派系成员的异种中选择，以保持派系一致性。</RandomStartMod.Misc.RespectFactionXenotypesTooltip>
 	<RandomStartMod.Misc.RandomizeCustomGenesTooltip>不使用预设异种，而是随机分配单个基因来为起始小人创造自定义基因组合。</RandomStartMod.Misc.RandomizeCustomGenesTooltip>

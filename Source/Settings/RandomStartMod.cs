@@ -1279,11 +1279,27 @@ namespace RandomStartMod
                 optionalFeaturesListingHeight += 24f;
                 DoSettingToggle(listingStandard.GetRect(24f), $"{"Randomize".Translate()}: {"Genes".Translate().CapitalizeFirst()}", "RandomStartMod.TooltipTitles.RandomizeCustomGenes".Translate().AsTipTitle() + "\n\n" + "RandomStartMod.Misc.RandomizeCustomGenesTooltip".Translate(), ref settings.enableRandomCustomXenotypes);
                 optionalFeaturesListingHeight += 24f;
-                if (settings.enableRandomXenotypes || settings.enableRandomCustomXenotypes)
-                {
-                    DoSettingToggle(listingStandard.GetRect(24f), "RandomStartMod.Misc.SameXenotypeForAll".Translate(), "RandomStartMod.TooltipTitles.SameXenotypeForAll".Translate().AsTipTitle() + "\n\n" + "RandomStartMod.Misc.SameXenotypeForAllTooltip".Translate(), ref settings.sameXenotypeForAll);
-                    optionalFeaturesListingHeight += 24f;
-                }
+                DoSettingToggle(listingStandard.GetRect(24f), "RandomStartMod.Misc.SameXenotypeForAll".Translate(), "RandomStartMod.TooltipTitles.SameXenotypeForAll".Translate().AsTipTitle() + "\n\n" + "RandomStartMod.Misc.SameXenotypeForAllTooltip".Translate(), ref settings.sameXenotypeForAll);
+                optionalFeaturesListingHeight += 24f;
+                listingStandard.Label("RandomStartMod.Misc.RandomXenotypeChance".Translate());
+                optionalFeaturesListingHeight += Text.LineHeight + 4f;
+                Rect randomXenotypeChanceRect = listingStandard.GetRect(24f);
+                settings.randomXenotypeChance = Widgets.HorizontalSlider(
+                    randomXenotypeChanceRect,
+                    settings.randomXenotypeChance,
+                    0f,
+                    1f,
+                    middleAlignment: true,
+                    settings.randomXenotypeChance.ToStringPercent(),
+                    null,
+                    null,
+                    0.01f
+                );
+                TooltipHandler.TipRegion(
+                    randomXenotypeChanceRect,
+                    "RandomStartMod.Misc.RandomXenotypeChanceTooltip".Translate()
+                );
+                optionalFeaturesListingHeight += 24f;
                 if (settings.enableRandomCustomXenotypes)
                 {
                     listingStandard.Gap();

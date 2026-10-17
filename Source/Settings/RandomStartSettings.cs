@@ -188,6 +188,7 @@ namespace RandomStartMod
         public bool enableRandomXenotypes = false;
         public bool enableRandomCustomXenotypes = false;
         public bool sameXenotypeForAll = false;
+        public float randomXenotypeChance = 1f;
         public IntRange randomGeneRange = new IntRange(5, 15);
         public bool enableMetabolicEfficiencyMinimum = false;
         public int minimumMetabolicEfficiency = 0;
@@ -492,6 +493,7 @@ namespace RandomStartMod
                 false
             );
             Scribe_Values.Look(ref sameXenotypeForAll, "sameXenotypeForAll", false);
+            Scribe_Values.Look(ref randomXenotypeChance, "randomXenotypeChance", 1f);
             Scribe_Values.Look(ref randomGeneRange, "randomGeneRange", new IntRange(5, 15));
             Scribe_Values.Look(
                 ref enableMetabolicEfficiencyMinimum,
@@ -785,6 +787,7 @@ namespace RandomStartMod
             enableRandomXenotypes = false;
             enableRandomCustomXenotypes = false;
             sameXenotypeForAll = false;
+            randomXenotypeChance = 1f;
             respectFactionXenotypes = true;
             randomGeneRange = new IntRange(5, 15);
             minimumMetabolicEfficiency = 0;

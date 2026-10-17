@@ -80,6 +80,8 @@
 	<RandomStartMod.Misc.GenesTitle>Genetic Traits</RandomStartMod.Misc.GenesTitle>
 	<RandomStartMod.Misc.GenesDescription>Configure genetic traits and xenotypes for your starting colonists:</RandomStartMod.Misc.GenesDescription>
 	<RandomStartMod.Misc.CountLabel>Count:</RandomStartMod.Misc.CountLabel>
+	<RandomStartMod.Misc.RandomXenotypeChance>Chance to randomize xenotype:</RandomStartMod.Misc.RandomXenotypeChance>
+	<RandomStartMod.Misc.RandomXenotypeChanceTooltip>Sets the chance for each starting colonist to receive a randomized xenotype or custom gene set. When sharing one xenotype, the chance is rolled once for the whole group.</RandomStartMod.Misc.RandomXenotypeChanceTooltip>
 	<RandomStartMod.Misc.RandomizeXenotypeTooltip>Randomly assign xenotypes to your starting pawns from all available xenotype definitions. This affects their genetic traits, abilities, and appearance.</RandomStartMod.Misc.RandomizeXenotypeTooltip>
 	<RandomStartMod.Misc.RespectFactionXenotypesTooltip>When randomizing xenotypes, only choose from xenotypes that are appropriate for your faction's members. This maintains lore consistency for faction-specific genetic traits.</RandomStartMod.Misc.RespectFactionXenotypesTooltip>
 	<RandomStartMod.Misc.RandomizeCustomGenesTooltip>Instead of using predefined xenotypes, randomly assign individual genes to create custom genetic combinations for your starting pawns.</RandomStartMod.Misc.RandomizeCustomGenesTooltip>
