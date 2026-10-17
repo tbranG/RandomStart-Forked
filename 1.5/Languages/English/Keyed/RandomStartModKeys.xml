@@ -7,6 +7,9 @@
 	<RandomStartMod.Characters.StartingPawnCount>Starting colonist count:</RandomStartMod.Characters.StartingPawnCount>
 	<RandomStartMod.Misc.RandomXenotypeChance>Chance to randomize xenotype:</RandomStartMod.Misc.RandomXenotypeChance>
 	<RandomStartMod.Misc.RandomXenotypeChanceTooltip>Sets the chance for each starting colonist to receive a randomized xenotype or custom gene set. When sharing one xenotype, the chance is rolled once for the whole group.</RandomStartMod.Misc.RandomXenotypeChanceTooltip>
+	<RandomStartMod.Scenarios.AlwaysSpawnEssentials>Always spawn essentials</RandomStartMod.Scenarios.AlwaysSpawnEssentials>
+	<RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>Always add two stacks of 25 vegetables, 1-2 weapons appropriate to your faction's tech level, and 5 medicine. Tribal and medieval factions receive herbal medicine; higher-tech factions receive industrial medicine.</RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>
+	<RandomStartMod.TooltipTitles.AlwaysSpawnEssentials>Always Spawn Essentials</RandomStartMod.TooltipTitles.AlwaysSpawnEssentials>
 	<RandomStartMod.ALittleMore>A Little More</RandomStartMod.ALittleMore>
 	<RandomStartMod.ALittleLess>A Little Less</RandomStartMod.ALittleLess>
 	<RandomStartMod.VeryHigh>Very High</RandomStartMod.VeryHigh>

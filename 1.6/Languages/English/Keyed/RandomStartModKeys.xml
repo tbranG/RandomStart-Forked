@@ -34,6 +34,8 @@
 	<RandomStartMod.Scenarios.ItemsDescription>Configure your colony's starting equipment and resources:</RandomStartMod.Scenarios.ItemsDescription>
 	<RandomStartMod.Scenarios.RemoveDefaultItemsTooltip>Remove all scattered starting items that your scenario would normally provide. This includes weapons, food, medicine, and other resources scattered around your starting area.</RandomStartMod.Scenarios.RemoveDefaultItemsTooltip>
 	<RandomStartMod.Scenarios.RandomizeItemsTooltip>Randomly add items to your starting area based on the configured count and tech level limits. These will replace any removed default items.</RandomStartMod.Scenarios.RandomizeItemsTooltip>
+	<RandomStartMod.Scenarios.AlwaysSpawnEssentials>Always spawn essentials</RandomStartMod.Scenarios.AlwaysSpawnEssentials>
+	<RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>Always add two stacks of 25 vegetables, 1-2 weapons appropriate to your faction's tech level, and 5 medicine. Tribal and medieval factions receive herbal medicine; higher-tech factions receive industrial medicine.</RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>
 	<RandomStartMod.Scenarios.MarketValueLimitTooltip>Set a maximum total market value for all randomly generated starting items. This prevents overpowered starts by limiting the combined worth of random equipment and resources.</RandomStartMod.Scenarios.MarketValueLimitTooltip>
 
 	<!-- Storyteller Settings -->
@@ -136,6 +138,7 @@
 	<RandomStartMod.TooltipTitles.UnlockPrerequisiteResearch>Unlock Prerequisite Research</RandomStartMod.TooltipTitles.UnlockPrerequisiteResearch>
 	<RandomStartMod.TooltipTitles.RemoveDefaultItems>Remove Default Items</RandomStartMod.TooltipTitles.RemoveDefaultItems>
 	<RandomStartMod.TooltipTitles.RandomizeItems>Randomize Items</RandomStartMod.TooltipTitles.RandomizeItems>
+	<RandomStartMod.TooltipTitles.AlwaysSpawnEssentials>Always Spawn Essentials</RandomStartMod.TooltipTitles.AlwaysSpawnEssentials>
 	<RandomStartMod.TooltipTitles.MarketValueLimit>Market Value Limit</RandomStartMod.TooltipTitles.MarketValueLimit>
 	<RandomStartMod.TooltipTitles.UniqueFactions>Unique Factions</RandomStartMod.TooltipTitles.UniqueFactions>
 	<RandomStartMod.TooltipTitles.RandomizeFactionGoodwill>Randomize Faction Goodwill</RandomStartMod.TooltipTitles.RandomizeFactionGoodwill>

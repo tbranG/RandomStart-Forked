@@ -43,6 +43,8 @@
 	<RandomStartMod.Scenarios.ItemsDescription>配置殖民地的起始装备与资源：</RandomStartMod.Scenarios.ItemsDescription>
 	<RandomStartMod.Scenarios.RemoveDefaultItemsTooltip>移除场景通常提供的所有散落起始物品（包括武器、食物、药物等）。</RandomStartMod.Scenarios.RemoveDefaultItemsTooltip>
 	<RandomStartMod.Scenarios.RandomizeItemsTooltip>根据配置的数量与科技等级上限随机向起始区域添加物品，替代任何移除的默认物品。</RandomStartMod.Scenarios.RandomizeItemsTooltip>
+	<RandomStartMod.Scenarios.AlwaysSpawnEssentials>始终生成必需物资</RandomStartMod.Scenarios.AlwaysSpawnEssentials>
+	<RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>始终添加两堆蔬菜（每堆25个）、1至2件符合派系科技等级的武器以及5个药品。部落和中世纪派系获得草药药品；更高科技等级的派系获得工业药品。</RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>
 	<RandomStartMod.Scenarios.MarketValueLimitTooltip>为所有随机生成的起始物品设定最大市场价值总和，限制随机装备与资源的总价值以防过强开局。</RandomStartMod.Scenarios.MarketValueLimitTooltip>
 
 	<!-- Storyteller Settings -->
@@ -142,6 +144,7 @@
 	<RandomStartMod.TooltipTitles.UnlockPrerequisiteResearch>解锁先决研究</RandomStartMod.TooltipTitles.UnlockPrerequisiteResearch>
 	<RandomStartMod.TooltipTitles.RemoveDefaultItems>移除默认物品</RandomStartMod.TooltipTitles.RemoveDefaultItems>
 	<RandomStartMod.TooltipTitles.RandomizeItems>随机化物品</RandomStartMod.TooltipTitles.RandomizeItems>
+	<RandomStartMod.TooltipTitles.AlwaysSpawnEssentials>始终生成必需物资</RandomStartMod.TooltipTitles.AlwaysSpawnEssentials>
 	<RandomStartMod.TooltipTitles.MarketValueLimit>市场价值上限</RandomStartMod.TooltipTitles.MarketValueLimit>
 	<RandomStartMod.TooltipTitles.UniqueFactions>唯一派系</RandomStartMod.TooltipTitles.UniqueFactions>
 	<RandomStartMod.TooltipTitles.RandomizeFactionGoodwill>随机化派系友善度</RandomStartMod.TooltipTitles.RandomizeFactionGoodwill>

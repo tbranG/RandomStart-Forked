@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -18,7 +19,7 @@ namespace RandomStartMod
             }
 
             RandomStartSettings settings = LoadedModManager.GetMod<RandomStartMod>().GetSettings<RandomStartSettings>();
-            if (!settings.removeStartingItems && !settings.addRandomItems)
+            if (!settings.removeStartingItems && !settings.addRandomItems && !settings.alwaysSpawnEssentials)
             {
                 return true;
             }
@@ -153,8 +154,106 @@ namespace RandomStartMod
                 Util.LogMessage($"Total item market cost: {totalRandomItemMarketValue} Limit: {(settings.enableMarketValueLimit ? settings.randomItemTotalMarketValueLimit.ToString() : "Disabled")}");
             }
 
+            if (settings.alwaysSpawnEssentials)
+            {
+                Util.LogMessage("Spawning essential starting items");
+                AddEssentialItems(list);
+            }
+
             DropPodUtility.DropThingGroupsNear(MapGenerator.PlayerStartSpot, map, list, 110, Find.GameInitData.QuickStarted || __instance.method != PlayerPawnsArriveMethod.DropPods, leaveSlag: true, canRoofPunch: true, forbid: true, allowFogged: false);
             return false;
+        }
+
+        private static void AddEssentialItems(List<List<Thing>> thingGroups)
+        {
+            if (thingGroups.Count == 0)
+            {
+                Log.Warning("[Random Start] Cannot spawn essential items because no starting pawns were generated.");
+                return;
+            }
+
+            int pawnCount = Find.GameInitData.startingAndOptionalPawns.Count;
+            int groupIndex = 0;
+            List<ThingDef> vegetables = DefDatabase<ThingDef>.AllDefsListForReading
+                .Where(def =>
+                    def.plant != null
+                    && def.plant.harvestedThingDef != null
+                    && def.plant.harvestedThingDef.stackLimit >= 25
+                    && def.plant.harvestedThingDef.ingestible != null
+                    && (
+                        def.plant.harvestedThingDef.ingestible.foodType
+                        & FoodTypeFlags.VegetableOrFruit
+                    ) != 0
+                )
+                .Select(def => def.plant.harvestedThingDef)
+                .Distinct()
+                .ToList();
+
+            if (vegetables.Count > 0)
+            {
+                ThingDef vegetable = vegetables.RandomElement();
+                AddEssentialThing(vegetable, 25, thingGroups, ref groupIndex);
+
+                vegetable = vegetables.RandomElement();
+                AddEssentialThing(vegetable, 25, thingGroups, ref groupIndex);
+            }
+            else
+            {
+                Log.Warning("[Random Start] No suitable vegetable definitions were found; skipping the essential vegetable stacks.");
+            }
+
+            TechLevel colonyTechLevel = Faction.OfPlayer.def.techLevel;
+            List<ThingDef> weapons = DefDatabase<ThingDef>.AllDefsListForReading
+                .Where(def =>
+                    def.IsWeapon
+                    && def.techLevel > TechLevel.Undefined
+                    && def.techLevel <= colonyTechLevel
+                )
+                .ToList();
+
+            if (weapons.Count > 0)
+            {
+                int weaponCount = Rand.Range(Math.Max(1, pawnCount - 1), pawnCount);
+                for (int i = 0; i < weaponCount; i++)
+                {
+                    ThingDef weapon = weapons.RandomElement();
+                    AddEssentialThing(weapon, 1, thingGroups, ref groupIndex);
+                }
+            }
+            else
+            {
+                Log.Warning($"[Random Start] No weapon definitions at or below colony tech level {colonyTechLevel} were found; skipping essential weapons.");
+            }
+
+            string medicineDefName = colonyTechLevel <= TechLevel.Medieval
+                ? "MedicineHerbal"
+                : "MedicineIndustrial";
+            ThingDef medicine = DefDatabase<ThingDef>.GetNamed(medicineDefName, false);
+            if (medicine != null)
+            {
+                AddEssentialThing(medicine, 5, thingGroups, ref groupIndex);
+            }
+            else
+            {
+                Log.Warning($"[Random Start] Could not find {medicineDefName}; skipping essential medicine.");
+            }
+        }
+
+        private static void AddEssentialThing(
+            ThingDef thingDef,
+            int count,
+            List<List<Thing>> thingGroups,
+            ref int groupIndex
+        )
+        {
+            Thing thing = ThingMaker.MakeThing(thingDef, GenStuff.RandomStuffFor(thingDef));
+            thing.stackCount = count;
+            if (thing.def.CanHaveFaction)
+            {
+                thing.SetFactionDirect(Faction.OfPlayer);
+            }
+            thingGroups[groupIndex].Add(thing);
+            groupIndex = (groupIndex + 1) % thingGroups.Count;
         }
     }
 }

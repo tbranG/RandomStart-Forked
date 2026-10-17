@@ -482,6 +482,8 @@ namespace RandomStartMod
             DoSettingToggle(listingStandard.GetRect(24f), "Randomize".Translate(), "RandomStartMod.TooltipTitles.RandomizeItems".Translate().AsTipTitle() + "\n\n" + "RandomStartMod.Scenarios.RandomizeItemsTooltip".Translate(), ref settings.addRandomItems);
             scenarioListingHeight += 24f;
 
+            DoSettingToggle(listingStandard.GetRect(24f), "RandomStartMod.Scenarios.AlwaysSpawnEssentials".Translate(), "RandomStartMod.TooltipTitles.AlwaysSpawnEssentials".Translate().AsTipTitle() + "\n\n" + "RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip".Translate(), ref settings.alwaysSpawnEssentials);
+            scenarioListingHeight += 24f;
 
             if (settings.addRandomItems)
             {

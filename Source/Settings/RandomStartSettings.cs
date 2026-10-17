@@ -205,6 +205,7 @@ namespace RandomStartMod
         public bool doRandomResearchPrerequisites = true;
         public bool removeStartingItems = false;
         public bool addRandomItems = false;
+        public bool alwaysSpawnEssentials = false;
         public IntRange randomItemRange = new IntRange(5, 15);
         public int randomItemTechLevelLimit = 4;
         public bool enableMarketValueLimit = false;
@@ -538,6 +539,7 @@ namespace RandomStartMod
 
             Scribe_Values.Look(ref removeStartingItems, "removeStartingItems", false);
             Scribe_Values.Look(ref addRandomItems, "addRandomItems", false);
+            Scribe_Values.Look(ref alwaysSpawnEssentials, "alwaysSpawnEssentials", false);
             Scribe_Values.Look(ref randomItemRange, "randomItemRange", new IntRange(5, 15));
             Scribe_Values.Look(ref randomItemTechLevelLimit, "randomItemTechLevelLimit", 4);
             Scribe_Values.Look(ref enableMarketValueLimit, "enableMarketValueLimit", false);
@@ -819,6 +821,7 @@ namespace RandomStartMod
         {
             removeStartingItems = false;
             addRandomItems = false;
+            alwaysSpawnEssentials = false;
             randomItemRange = new IntRange(5, 15);
             randomItemTechLevelLimit = 4;
             randomItemTotalMarketValueLimit = 10000;
