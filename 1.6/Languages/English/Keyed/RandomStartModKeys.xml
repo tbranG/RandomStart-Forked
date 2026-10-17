@@ -46,7 +46,7 @@
 	<RandomStartMod.Scenarios.RemoveDefaultItemsTooltip>Remove all scattered starting items that your scenario would normally provide. This includes weapons, food, medicine, and other resources scattered around your starting area.</RandomStartMod.Scenarios.RemoveDefaultItemsTooltip>
 	<RandomStartMod.Scenarios.RandomizeItemsTooltip>Randomly add items to your starting area based on the configured count and tech level limits. These will replace any removed default items.</RandomStartMod.Scenarios.RandomizeItemsTooltip>
 	<RandomStartMod.Scenarios.AlwaysSpawnEssentials>Always spawn essentials</RandomStartMod.Scenarios.AlwaysSpawnEssentials>
-	<RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>Always add two stacks of 25 vegetables, 1-2 weapons appropriate to your faction's tech level, and 5 medicine. Tribal and medieval factions receive herbal medicine and 25 pemmican per colonist; industrial and higher-tech factions receive industrial medicine and 5 packaged survival meals per colonist.</RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>
+	<RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>Adds useful items to help your survival. (Only work on random generated scenarios)</RandomStartMod.Scenarios.AlwaysSpawnEssentialsTooltip>
 	<RandomStartMod.Scenarios.MarketValueLimitTooltip>Set a maximum total market value for all randomly generated starting items. This prevents overpowered starts by limiting the combined worth of random equipment and resources.</RandomStartMod.Scenarios.MarketValueLimitTooltip>
 
 	<!-- Storyteller Settings -->

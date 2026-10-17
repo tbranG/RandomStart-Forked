@@ -166,6 +166,9 @@ namespace RandomStartMod
 
         private static void AddEssentialItems(List<List<Thing>> thingGroups)
         {
+            RandomStartSettings settings = LoadedModManager.GetMod<RandomStartMod>().GetSettings<RandomStartSettings>();
+            if (!settings.createRandomScenario) return;
+
             if (thingGroups.Count == 0)
             {
                 Log.Warning("[Random Start] Cannot spawn essential items because no starting pawns were generated.");
